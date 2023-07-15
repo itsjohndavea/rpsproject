@@ -7,15 +7,35 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-
-    <section id="weapon-section">
-        <div class="weapon-area">
-            <button class="weapon-button rock-button">Rock</button>
-            <button class="weapon-button paper-button">Paper</button>
-            <button class="weapon-button scissors-button">Scissors</button>
+<h1>Rock Paper Scissors</h1>
+<!-- Screen Section -->
+<button class="play-button" value="play" id="play" onclick="playGame()"  style="display:block;">Play Game!</button>
+<section id="screen-section">
+    <div class="container">
+        <div class="background-container">
+            <div class="player-img"></div>
+            <div class="chat-img"></div>
+            <div class="rock-paper-scissor-img"></div>
+            <h1 class="result" id="result"></h1>
+            <div class="boss-img"></div>
         </div>
+    </div>
+</section>
+<!-- Weapon Section -->
+    <section id="weapon-section">
+        <div class="weapon-area" style="display: none;">
+            <button class="choice-button" value="scissors" id="scissors">Scissors</button>
+            <button class="choice-button" value="paper" id="paper">Paper</button>
+            <button class="choice-button" value="rock" id="rock">Rock</button>
+        </div>
+        <!-- <div class="choice-container">
+            <img class="choice-weapon" src="scissors.png" alt="Scissors" data-choice="scissors">
+            <img class="choice-weapon" src="paper.png" alt="Paper" data-choice="paper">
+            <img class="choice-weapon" src="rock.png" alt="Rock" data-choice="rock">
+          </div> -->
     </section>
+<footer>
+</footer>
  
    
 
