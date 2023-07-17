@@ -1,0 +1,240 @@
+    * {
+        margin: 0px auto;
+        cursor: url('../images/Cursor_Grand\ Chase.cur'), auto;
+    }
+
+    /* Utility */
+    :root {
+        --primary-lightdark: #333333;
+        --primary-purple: #516DFF;
+        --primary-dark: #070709;
+        --primary-darkblue: #1B1871;
+        --primary-white: #FFFFFF;
+        --primary-shadow: #888888;
+        --primary-transparent: #00000000;
+        --primary-dark-gradient: rgba(7, 7, 9, 1);
+        --primary-darkblue-gradient: rgba(27, 24, 113, 1);
+    }
+
+    /* for bouncing animation */
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+            /* Start and end position of the bounce */
+        }
+
+        50% {
+            transform: translateY(-10px);
+            /* Middle position of the bounce */
+        }
+    }
+
+    @keyframes bounce1 {
+
+        0%,
+        100% {
+            transform: scaleX(-1) translateY(0);
+        }
+
+        50% {
+            transform: scaleX(-1) translateY(-20px);
+        }
+    }
+
+    #startcontainer {
+        background-image: linear-gradient(180deg, var(--primary-dark-gradient) 70.58%, var(--primary-darkblue-gradient) 100%);
+        height: 600px;
+        position: relative;
+        text-align: center;
+        justify-content: center;
+    }
+
+    #startcontainer img {
+        position: absolute;
+        width: 300px;
+        padding: 5%;
+        margin: 10px 10px 10px -125px;
+    }
+
+    #startcontainer #startbutton {
+        position: absolute;
+        background-color: #0095ff;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.15385;
+        position: relative;
+        text-align: center;
+        margin: 250px 10px 10px 10px;
+        padding: 20px 20px 20px 20px;
+    }
+
+    #startbutton:hover {
+        background-color: rgb(200, 213, 223);
+    }
+
+    #startbutton:active {
+        background-color: #0064bd;
+        box-shadow: none;
+    }
+
+    .main-container {
+        margin-top: -50px;
+        height: 300px;
+        padding: 15%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-image: url(../images/AernasNew.webp);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    #screen-section {
+        padding: 0px 5px 0px 0px;
+        margin-top: -200px;
+    }
+
+    .rsp {
+        margin-top: 40px;
+        margin-left: -130px;
+        position: absolute;
+        width: 20%;
+    }
+
+    .title {
+        z-index: 1;
+        width: 25%;
+        position: absolute;
+        left: 520px;
+        top: 70px;
+    }
+
+    .background-img {
+        margin: 120px 0px 0px 0px;
+        width: 85%;
+        border-style: solid;
+        border-radius: 15px;
+    }
+
+    .player-img {
+        position: relative;
+    }
+
+    .player-img .player {
+        width: 200px;
+        position: absolute;
+        top: -350px;
+        left: 50px;
+        animation: bounce1 7s infinite;
+    }
+
+    .player-img .player-chat {
+        width: 200px;
+        position: absolute;
+        top: -100px;
+        left: 50px;
+        transform: translate(150px, -250px);
+    }
+    .player-img .player-weapon{
+        width: 120px;
+        position: absolute;
+        top: -100px;
+        left: 40px;
+        transform: translate(210px, -250px);
+    }
+
+    .boss-img {
+        position: relative;
+    }
+
+    .boss-img .boss {
+        width: 350px;
+        position: absolute;
+        bottom: -50px;
+        right: 10px;
+        animation: bounce 6s infinite;
+    }
+
+    .boss-img .boss-chat {
+        width: 200px;
+        position: absolute;
+        bottom: 190px;
+        right: 250px;
+        transform: scaleX(-1);
+    }
+    .boss-img .boss-weapon{
+        width: 120px;
+        position: absolute;
+        top: -100px;
+        left: 40px;
+        transform: translate(480px, -220px);
+    }
+
+    .round-img img {
+        width: 250px;
+        transform: translate(0px, -170px);
+    }
+
+    .choice-container img {
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 1%;
+        border-radius: 5%;
+        background-color: #fff;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+    }
+
+    .choice-container img:hover {
+        background-color: #d3b9b9;
+    }
+
+    .slideshow img:nth-child(1) {
+  animation: imageSlideshow 0.5s infinite;
+}
+
+.slideshow img:nth-child(2) {
+  animation: imageSlideshow 0.5s infinite 0.5s;
+}
+
+.slideshow img:nth-child(3) {
+  animation: imageSlideshow 0.5s infinite 1s;
+}
+
+@keyframes imageSlideshow {
+  0% {
+    opacity: 0;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  66.67% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+    footer {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        height: 65px;
+        background-color: var(--primary-lightdark);
+        color: var(--primary-white);
+        font-size: 10px;
+        font-family: 'Roboto', sans-serif;
+        box-shadow: 1px 2px var(--primary-shadow);
+    }

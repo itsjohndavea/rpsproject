@@ -4,7 +4,12 @@ const weapons = ["rock", "paper", "scissors"];
 let isFinalBoss = false;
 let playerWins = 0;
 let gameInProgress = false;
-
+//loading screen
+// window.addEventListener('load', function() {
+//   var loadingScreen = document.getElementById('loading-screen');
+//   var content = document.getElementById('content');
+//   loadingScreen.style.display = 'none';
+// });
 const getBossChoice = () => {
   if (isFinalBoss) {
     const finalBossWeapons = ["rock", "paper", "scissors"];
@@ -16,18 +21,23 @@ const getBossChoice = () => {
 };
 
 const getPlayerChoice = () => {
-  const buttons = document.querySelectorAll(".choice-button");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
+  const choiceWeapons = document.querySelectorAll(".choice-weapon");
+  choiceWeapons.forEach(choice => {
+    choice.addEventListener("click", () => {
       if (gameInProgress) {
-        const playerChoice = button.id;
+        const playerChoice = choice.getAttribute("data-choice");
         const bossChoice = getBossChoice();
         playRound(playerChoice, bossChoice);
+
+        // Update the player's weapon image
+        const playerWeaponImage = document.querySelector("#playerWeapon");
+        const chosenWeaponImageSrc = choice.getAttribute("src");
+        playerWeaponImage.src = chosenWeaponImageSrc;
       }
     });
   });
 };
+
 
 const playRound = (playerChoice, bossChoice) => {
   const success = `Impressive! You won! You used ${playerChoice} and your opponent used ${bossChoice}`;
@@ -36,42 +46,54 @@ const playRound = (playerChoice, bossChoice) => {
 
   switch (true) {
     case playerChoice === bossChoice:
-      document.querySelector('.result').innerHTML = draw;
+      console.log(draw);
+      // document.querySelector('.result').innerHTML = draw;
       break;
     case playerChoice === "scissors" && bossChoice === "paper":
     case playerChoice === "rock" && bossChoice === "scissors":
     case playerChoice === "paper" && bossChoice === "rock":
       increaseWins();
-      document.querySelector('.result').innerHTML = success;
+      console.log(success)
+      // document.querySelector('.result').innerHTML = success;
       break;
     default:
       decreaseLives();
-      document.querySelector('.result').innerHTML = failed;
+      console.log(failed);
+      // document.querySelector('.result').innerHTML = failed;
       break;
   }
 };
 
-const playGame = () => {
-  const weaponArea = document.querySelector(".weapon-area");
-  const play = document.querySelector("#play");
+const startGame = () => {
+  const gameContainer = document.querySelector("#main-container");
+  const startContainer = document.querySelector("#startcontainer");
+  // const loadingScreen = document.querySelector("#loading-screen");
 
   if (playerLives > 0) {
-    weaponArea.style.display = "block";
-    play.style.display = "none";
     gameInProgress = true;
+    if (gameContainer.style.display === "none") {
+      // loadingScreen.style.display = "block";
+
+      setTimeout(() => {
+        // loadingScreen.style.display = "none";
+        gameContainer.style.display = "block";
+        startContainer.style.display = "none";
+      }, 2000); // Delay of 2000 milliseconds (2 seconds)
+    }
   } else {
-    document.querySelector('.result').innerHTML = "Game Over!";
-    hideButtons();
-    play.style.display = "block";
+    console.log("GameOver")
+    // document.querySelector('.result').innerHTML = "Game Over!";
     gameInProgress = false;
   }
 
   getPlayerChoice();
 };
 
+
 const decreaseLives = () => {
   playerLives--;
-  console.log(`Player lives: ${playerLives}`);
+  console.log(playerLives);
+  // document.querySelector(".lives").innerHTML = playerLives;
   if (playerLives === 0) {
     console.log("Game over! You have no more lives.");
     showPlayAgainPrompt();
@@ -90,16 +112,6 @@ const increaseWins = () => {
   }
 };
 
-const hideButtons = () => {
-  const weaponArea = document.querySelector(".weapon-area");
-  weaponArea.style.display = "none";
-};
-
-const showButtons = () => {
-  const weaponArea = document.querySelector(".weapon-area");
-  weaponArea.style.display = "block";
-};
-
 const showPlayAgainPrompt = () => {
   const playAgain = confirm("Do you want to play again?");
   if (playAgain) {
@@ -107,7 +119,6 @@ const showPlayAgainPrompt = () => {
     location.reload();
   } else {
     console.log("Thanks for playing!");
-    hideButtons();
     location.reload();
   }
 };
@@ -117,6 +128,7 @@ const resetGame = () => {
   playerWins = 0;
   isFinalBoss = false;
   console.log("Game reset. Starting a new game.");
-  playGame();
+  startGame();
 };
+
 

@@ -3,42 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors Game</title>
+    <title>Rock Paper Scissors Fun</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<h1>Rock Paper Scissors</h1>
-<!-- Screen Section -->
-<button class="play-button" value="play" id="play" onclick="playGame()"  style="display:block;">Play Game!</button>
-<section id="screen-section">
-    <div class="container">
-        <div class="background-container">
-            <div class="player-img"></div>
-            <div class="chat-img"></div>
-            <div class="rock-paper-scissor-img"></div>
-            <h1 class="result" id="result"></h1>
-            <div class="boss-img"></div>
+    <div class="container" id="startcontainer">
+        <img src="assets/images/grandchase.png" alt="">
+        <button id="startbutton" onclick="startGame()"> Start Game</button>
+    </div>
+    <!-- <div id="loading-screen">
+        <div class="spinner">
+            <div class="loading-text">Loading</div>
         </div>
+    </div> -->
+<div class="main-container" id="main-container" style="display: none;">
+<!-- Screen Section -->
+<section id="screen-section">
+        <div class="background-container">
+            <div class="background-container">
+                <img class="rsp" src="assets/images/rockpaperscissors.png" alt="scissors">
+            </div>
+            <img src="assets/images/title.png" class="title">
+            <img src="assets/images/background.png" class="background-img">
+            <div class="player-img">
+                <img src="assets/images/characters/Grand_Chase_for_kakao_Mist_01.webp" class="player">
+                <img src="assets/images/gcChat.png" class="player-chat">
+                <img src="assets/images/questionmark.png" class="player-weapon" id="playerWeapon" > 
+            </div>
+            <div class="boss-img">
+                <img src="assets/images/boss/serdin/NewTreant.webp" class="boss">
+                <img src="assets/images/gcChat.png" class="boss-chat">
+                <img src="assets/images/questionmark.png" class="boss-weapon">
+            </div>
+            <div class="rock-paper-scissor-img" ></div>
+            <h1 class="result" id="result"></h1>
+            <p class="lives" id="lives"></p>
     </div>
 </section>
 <!-- Weapon Section -->
     <section id="weapon-section">
-        <div class="weapon-area" style="display: none;">
-            <button class="choice-button" value="scissors" id="scissors">Scissors</button>
-            <button class="choice-button" value="paper" id="paper">Paper</button>
-            <button class="choice-button" value="rock" id="rock">Rock</button>
-        </div>
-        <!-- <div class="choice-container">
-            <img class="choice-weapon" src="scissors.png" alt="Scissors" data-choice="scissors">
-            <img class="choice-weapon" src="paper.png" alt="Paper" data-choice="paper">
-            <img class="choice-weapon" src="rock.png" alt="Rock" data-choice="rock">
-          </div> -->
+        <div class="choice-container">
+            <img class="choice-weapon" src="assets/images/rock.png" alt="rock" data-choice="rock">
+            <img class="choice-weapon" src="assets/images/paper.png" alt="Paper" data-choice="paper">
+            <img class="choice-weapon" src="assets/images/scissors.png" alt="scissors" data-choice="scissors">
+          </div>
     </section>
+</div>
 <footer>
+    <p>©<script>document.write(new Date().getFullYear())</script> MYST | For Odin Project Purposes.| Created By: Davee</p>
 </footer>
+<script src="function/index.js"></script>
  
    
 
-    <script src="function/index.js"></script>
+  
 </body>
 </html>
