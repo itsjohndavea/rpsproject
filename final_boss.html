@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Fun</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="main-container" id="main-container">
+<!-- Screen Section -->
+<section id="screen-section">
+    <button id="openModalButton">Open Modal</button>
+    <div id="modalOverlay" class="modal-overlay">
+      <div id="modalContent" class="modal-content">
+        <h1 id="modalTitle"></h1>
+        <p id="modalMessage"></p>
+        <button id="closeModalButton">Close</button>
+      </div>
+    </div>
+    <button id="playAgainButton">Play Again</button>
+
+<div id="playAgainModal" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Play Again?</h2>
+    <p>Do you want to play again?</p>
+    <div class="modal-buttons">
+      <button id="playAgainYes">Yes</button>
+      <button id="playAgainNo">No</button>
+    </div>
+  </div>
+</div>
+        <div class="background-container">
+            <div class="background-container">
+                <img class="rsp" src="assets/images/rockpaperscissors.png" alt="scissors">
+            </div>
+            <img src="assets/images/title.png" class="title">
+            <img src="assets/images/background.png" class="background-img">
+            <div class="player-img">
+                <img src="assets/images/characters/Grand_Chase_for_kakao_Mist_01.webp" class="player">
+                <img src="assets/images/gcChat.png" class="player-chat">
+                <img src="assets/images/questionmark.png" class="player-weapon" id="playerWeapon" > 
+                <p class="lives" id="lives"></p>
+            </div>
+            <div class="boss-img">
+                <img src="assets/images/boss/serdin/finalboss.png"  class="boss">
+                <img src="assets/images/gcChat.png" class="boss-chat">
+                <img src="assets/images/questionmark.png" class="boss-weapon">
+                <p class="bosslives" id="bosslives"></p>
+            </div>
+    </div>
+</section>
+<!-- Weapon Section -->
+    <section id="weapon-section">
+        <div class="choice-container">
+            <img class="choice-weapon" src="assets/images/rock.png" alt="rock" data-choice="rock">
+            <img class="choice-weapon" src="assets/images/paper.png" alt="Paper" data-choice="paper">
+            <img class="choice-weapon" src="assets/images/scissors.png" alt="scissors" data-choice="scissors">
+          </div>
+    </section>
+</div>
+<footer>
+    <p>©<script>document.write(new Date().getFullYear())</script> MYST | For Odin Project Purposes.| Created By: Davee</p>
+</footer>
+<script src="function/finalboss.js"></script>
+ 
+   
+
+  
+</body>
+</html>
