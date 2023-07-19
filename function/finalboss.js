@@ -116,22 +116,22 @@ const startGame = () => {
 
   getPlayerChoice();
   document.querySelector(".lives").innerHTML = "HP: " + playerLives;
-  document.querySelector(".bosslives").innerHTML = "HP: " + bossLife;
+  document.querySelector(".bosslives").innerHTML = "HP: "+ bossLife;
 };
-
 
 const decreaseLives = () => {
   playerLives--;
   document.querySelector(".lives").innerHTML = "HP: " + playerLives;
   if (playerLives === 0) {
-    console.log("Game over! You have no more lives.");
     showPlayAgainModal();
   }
 };
-
 const BossdecreaseLives = () => {
   bossLife--;
   document.querySelector(".bosslives").innerHTML = "HP: " + bossLife;
+  if (bossLife === 0) {
+    showPlayAgainModal();
+  }
 };
 const showPlayAgainPrompt = () => {
   showPlayAgainModal();

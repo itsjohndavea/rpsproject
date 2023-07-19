@@ -20,16 +20,39 @@ const getBossChoice = () => {
     const finalBossWeapons = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * finalBossWeapons.length);
     const bossChoice = finalBossWeapons[randomIndex];
-    // Update boss weapon image
-    bossWeaponImage.setAttribute("src", `assets/images/${bossChoice}.png`);
+    // Update boss weapon image with animation
+    animateBossWeapon(bossChoice);
     return bossChoice;
   } else {
     const botWeapon = weapons[Math.floor(Math.random() * weapons.length)];
-    // Update boss weapon image
-    bossWeaponImage.setAttribute("src", `assets/images/${botWeapon}.png`);
+    // Update boss weapon image directly (no animation)
+    updateBossWeaponImage(botWeapon);
     return botWeapon;
   }
 };
+
+function animateBossWeapon(bossChoice) {
+  const bossWeaponImage = document.getElementById("bossWeaponImage");
+  const bossWeaponWrapper = document.getElementById("bossWeaponWrapper");
+  
+  // Apply animation class to initiate the shuffle animation
+  bossWeaponWrapper.classList.add("animate-shuffle");
+
+  // Wait for 3 seconds before updating the boss weapon image with the chosen weapon
+  setTimeout(() => {
+    // Remove animation class
+    bossWeaponWrapper.classList.remove("animate-shuffle");
+    
+    // Update boss weapon image with the chosen weapon
+    updateBossWeaponImage(bossChoice);
+  }, 3000);
+}
+
+function updateBossWeaponImage(weapon) {
+  const bossWeaponImage = document.getElementById("bossWeaponImage");
+  bossWeaponImage.setAttribute("src", `assets/images/${weapon}.png`);
+}
+
 const getPlayerChoice = () => {
   choiceWeapons.forEach(choice => {
     choice.addEventListener("click", () => {
@@ -50,23 +73,17 @@ const increaseWins = () => {
   const bossImage = document.querySelector(".boss");
   console.log(`Player wins: ${playerWins}`);
   if (playerWins === 1) {
-    console.log(`You defeated mini boss ${playerWins}! Get ready for the next one!`);
-    // Update boss image for the next mini boss
     const bossImage = document.querySelector(".boss");
     bossWeaponImage.src = `assets/images/questionmark.png`;
-    const bossImagePath = `assets/images/boss/serdin/mini2.png`;
+    const bossImagePath = `assets/images/boss/serdin/mini2.webp`;
     bossImage.src = bossImagePath;
   }
   else if(playerWins === 2) {
-    console.log(`You defeated mini boss ${playerWins}! Get ready for the next one!`);
-    // Update boss image for the next mini boss
     bossWeaponImage.src = `assets/images/questionmark.png`;
-    const bossImagePath = `assets/images/boss/serdin/mini3.webp`;
+    const bossImagePath = `assets/images/boss/serdin/mini3.png`;
     bossImage.src = bossImagePath;
   }
   else if(playerWins === 3) {
-    console.log(`You defeated mini boss ${playerWins}! Get ready for the next one!`);
-    // Update boss image for the next mini boss
     bossWeaponImage.src = `assets/images/questionmark.png`;
     const bossImagePath = `assets/images/boss/serdin/mini4.webp`;
     bossImage.src = bossImagePath;
@@ -77,8 +94,6 @@ const increaseWins = () => {
       window.location.assign("final_boss.html");
     }, 5000);
   } else if (playerWins === 5) {
-    console.log("Congratulations! You defeated the final boss!");
-    // Update boss image for the final boss
     const bossImage = document.querySelector(".boss");
     const bossImagePath = "assets/images/boss/serdin/finalboss.webp";
     bossImage.src = bossImagePath;
@@ -128,9 +143,9 @@ const playRound = (playerChoice, bossChoice) => {
     case playerChoice === "paper" && bossChoice === "rock":
       increaseWins();
       if(playerWins === 3){
-        showModal("Success", success2, "success");
-      }else if(playerWins <= 2){
         showModal("Success", success, "success");
+      }else if(playerWins <= 2){
+        showModal("Success", success2, "success");
       }
       else if(playerWins === 4){
         showModal("Success", success3, "success");

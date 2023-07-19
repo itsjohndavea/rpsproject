@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Fun</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/finalboss.css">
+    <style>
+      .animate-shuffle {
+        animation: shuffle 3s infinite;
+      }
+    
+      @keyframes shuffle {
+        0% { transform: translateY(0); }
+        25% { transform: translateY(-20px); }
+        50% { transform: translateY(20px); }
+        75% { transform: translateY(-20px); }
+        100% { transform: translateY(0); }
+      }
+    </style>
 </head>
 <body>
 
@@ -23,8 +36,7 @@
 
 <div id="playAgainModal" class="modal-overlay">
   <div class="modal-content">
-    <h2>Play Again?</h2>
-    <p>Do you want to play again?</p>
+    <h1>Do you want to play again?</h1>
     <div class="modal-buttons">
       <button id="playAgainYes">Yes</button>
       <button id="playAgainNo">No</button>
@@ -46,9 +58,13 @@
             <div class="boss-img">
                 <img src="assets/images/boss/serdin/finalboss.png"  class="boss">
                 <img src="assets/images/gcChat.png" class="boss-chat">
-                <img src="assets/images/questionmark.png" class="boss-weapon">
+                <div id="bossWeaponWrapper">
+                  <img id="bossWeaponImage" src="assets/images/questionmark.png"class="boss-weapon" alt="Boss Weapon" />
+                </div>
+                
                 <p class="bosslives" id="bosslives"></p>
             </div>
+            
     </div>
 </section>
 <!-- Weapon Section -->
