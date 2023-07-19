@@ -119,9 +119,9 @@ const playRound = (playerChoice, bossChoice) => {
     case playerChoice === "rock" && bossChoice === "scissors":
     case playerChoice === "paper" && bossChoice === "rock":
       increaseWins();
-      if(playerWins === 3){
+      if(playerWins <= 2){
         showModal("Success", success, "success");
-      }else if(playerWins <= 2){
+      }else if(playerWins === 3){
         showModal("Success", success2, "success");
       }
       else if(playerWins === 4){
@@ -145,16 +145,13 @@ const startGame = () => {
       }, 2000); // Delay of 2000 milliseconds (2 seconds)
     }
   } else {
-    console.log("GameOver")
-    // document.querySelector('.result').innerHTML = "Game Over!";
+    console.log("GameOver");
     gameInProgress = false;
   }
 
   getPlayerChoice();
   document.querySelector(".lives").innerHTML = "HP: " + playerLives;
 };
-
-
 const decreaseLives = () => {
   playerLives--;
   document.querySelector(".lives").innerHTML = "HP: " + playerLives;
@@ -163,9 +160,6 @@ const decreaseLives = () => {
     showPlayAgainModal();
   }
 };
-
-
-
 const showPlayAgainPrompt = () => {
   showPlayAgainModal();
 };
