@@ -9,11 +9,10 @@ const choiceWeapons = document.querySelectorAll(".choice-weapon");
 const gameContainer = document.querySelector("#main-container");
 const startContainer = document.querySelector("#startcontainer");
 
-
-window.addEventListener('load', function() {
-  var loadingScreen = document.getElementById('loading-screen');
-  var content = document.getElementById('content');
-  loadingScreen.style.display = 'none';
+window.addEventListener("load", function () {
+  var loadingScreen = document.getElementById("loading-screen");
+  var content = document.getElementById("content");
+  loadingScreen.style.display = "none";
 });
 const getBossChoice = () => {
   if (isFinalBoss) {
@@ -31,7 +30,7 @@ const getBossChoice = () => {
   }
 };
 const getPlayerChoice = () => {
-  choiceWeapons.forEach(choice => {
+  choiceWeapons.forEach((choice) => {
     choice.addEventListener("click", () => {
       if (gameInProgress) {
         const playerChoice = choice.getAttribute("data-choice");
@@ -54,19 +53,16 @@ const increaseWins = () => {
     bossWeaponImage.src = `assets/images/questionmark.png`;
     const bossImagePath = `assets/images/boss/serdin/mini2.webp`;
     bossImage.src = bossImagePath;
-  }
-  else if(playerWins === 2) {
+  } else if (playerWins === 2) {
     bossWeaponImage.src = `assets/images/questionmark.png`;
     const bossImagePath = `assets/images/boss/serdin/mini3.png`;
     bossImage.src = bossImagePath;
-  }
-  else if(playerWins === 3) {
+  } else if (playerWins === 3) {
     bossWeaponImage.src = `assets/images/questionmark.png`;
     const bossImagePath = `assets/images/boss/serdin/mini4.webp`;
     bossImage.src = bossImagePath;
-  }
-  else if (playerWins === 4) {
-    document.body.classList.add('blur-effect');
+  } else if (playerWins === 4) {
+    document.body.classList.add("blur-effect");
     setTimeout(() => {
       window.location.assign("final_boss.html");
     }, 5000);
@@ -74,22 +70,22 @@ const increaseWins = () => {
     const bossImage = document.querySelector(".boss");
     const bossImagePath = "assets/images/boss/serdin/finalboss.webp";
     bossImage.src = bossImagePath;
-  }else{
+  } else {
     showPlayAgainPrompt();
   }
 };
 //Modals
-const openModalButton = document.getElementById('openModalButton');
-const closeModalButton = document.getElementById('closeModalButton');
-const modalOverlay = document.getElementById('modalOverlay');
-const modalTitle = document.getElementById('modalTitle');
-const modalMessage = document.getElementById('modalMessage');
+const openModalButton = document.getElementById("openModalButton");
+const closeModalButton = document.getElementById("closeModalButton");
+const modalOverlay = document.getElementById("modalOverlay");
+const modalTitle = document.getElementById("modalTitle");
+const modalMessage = document.getElementById("modalMessage");
 
-openModalButton.addEventListener('click', function() {
+openModalButton.addEventListener("click", function () {
   showModal("Draw", "You both used scissors");
 });
 
-closeModalButton.addEventListener('click', function() {
+closeModalButton.addEventListener("click", function () {
   hideModal();
 });
 
@@ -97,11 +93,11 @@ const showModal = (title, message, resultClass) => {
   modalTitle.textContent = title;
   modalMessage.textContent = message;
   modalMessage.className = resultClass;
-  modalOverlay.style.display = 'flex';
+  modalOverlay.style.display = "flex";
 };
 
 const hideModal = () => {
-  modalOverlay.style.display = 'none';
+  modalOverlay.style.display = "none";
 };
 
 const playRound = (playerChoice, bossChoice) => {
@@ -119,12 +115,11 @@ const playRound = (playerChoice, bossChoice) => {
     case playerChoice === "rock" && bossChoice === "scissors":
     case playerChoice === "paper" && bossChoice === "rock":
       increaseWins();
-      if(playerWins <= 2){
+      if (playerWins <= 2) {
         showModal("Success", success, "success");
-      }else if(playerWins === 3){
+      } else if (playerWins === 3) {
         showModal("Success", success2, "success");
-      }
-      else if(playerWins === 4){
+      } else if (playerWins === 4) {
         showModal("Success", success3, "success");
       }
       break;
@@ -172,33 +167,29 @@ const resetGame = () => {
   console.log("Game reset. Starting a new game.");
   startGame();
 };
-const playAgainButton = document.getElementById('playAgainButton');
-const playAgainYesButton = document.getElementById('playAgainYes');
-const playAgainNoButton = document.getElementById('playAgainNo');
-const playAgainModal = document.getElementById('playAgainModal');
+const playAgainButton = document.getElementById("playAgainButton");
+const playAgainYesButton = document.getElementById("playAgainYes");
+const playAgainNoButton = document.getElementById("playAgainNo");
+const playAgainModal = document.getElementById("playAgainModal");
 
-playAgainButton.addEventListener('click', function() {
+playAgainButton.addEventListener("click", function () {
   showPlayAgainPrompt();
 });
 
-playAgainYesButton.addEventListener('click', function() {
+playAgainYesButton.addEventListener("click", function () {
   resetGame();
   hidePlayAgainModal();
 });
 
-playAgainNoButton.addEventListener('click', function() {
+playAgainNoButton.addEventListener("click", function () {
   resetGame();
   hidePlayAgainModal();
 });
 
 const showPlayAgainModal = () => {
-  playAgainModal.style.display = 'flex';
-  
+  playAgainModal.style.display = "flex";
 };
 
 const hidePlayAgainModal = () => {
-  playAgainModal.style.display = 'none';
+  playAgainModal.style.display = "none";
 };
-
-
-
