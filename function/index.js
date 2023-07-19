@@ -20,39 +20,16 @@ const getBossChoice = () => {
     const finalBossWeapons = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * finalBossWeapons.length);
     const bossChoice = finalBossWeapons[randomIndex];
-    // Update boss weapon image with animation
-    animateBossWeapon(bossChoice);
+    // Update boss weapon image
+    bossWeaponImage.setAttribute("src", `assets/images/${bossChoice}.png`);
     return bossChoice;
   } else {
     const botWeapon = weapons[Math.floor(Math.random() * weapons.length)];
-    // Update boss weapon image directly (no animation)
-    updateBossWeaponImage(botWeapon);
+    // Update boss weapon image
+    bossWeaponImage.setAttribute("src", `assets/images/${botWeapon}.png`);
     return botWeapon;
   }
 };
-
-function animateBossWeapon(bossChoice) {
-  const bossWeaponImage = document.getElementById("bossWeaponImage");
-  const bossWeaponWrapper = document.getElementById("bossWeaponWrapper");
-  
-  // Apply animation class to initiate the shuffle animation
-  bossWeaponWrapper.classList.add("animate-shuffle");
-
-  // Wait for 3 seconds before updating the boss weapon image with the chosen weapon
-  setTimeout(() => {
-    // Remove animation class
-    bossWeaponWrapper.classList.remove("animate-shuffle");
-    
-    // Update boss weapon image with the chosen weapon
-    updateBossWeaponImage(bossChoice);
-  }, 3000);
-}
-
-function updateBossWeaponImage(weapon) {
-  const bossWeaponImage = document.getElementById("bossWeaponImage");
-  bossWeaponImage.setAttribute("src", `assets/images/${weapon}.png`);
-}
-
 const getPlayerChoice = () => {
   choiceWeapons.forEach(choice => {
     choice.addEventListener("click", () => {
